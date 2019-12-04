@@ -1,0 +1,23 @@
+<html>
+<body>
+
+  <img id='img' width=800 src='objet.jpg'>
+  <div id='log'></div>
+  <script>
+    function clicked(evt){
+
+      var e = evt.target;
+      var dim = e.getBoundingClientRect();
+      var x = evt.clientX - dim.left;
+      var y = evt.clientY - dim.top;
+      console.log(x,y)
+      document.getElementById("log").innerText=
+      document.getElementById("log").innerText+x+" "+y+"\n";
+    }
+    document.getElementById("img").addEventListener("click", clicked, false);
+
+
+  </script>
+
+</body>
+</html>
