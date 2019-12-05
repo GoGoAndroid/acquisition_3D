@@ -1,6 +1,4 @@
-# acquisition_3D
-
-Tools for 3D acquisitions in developpement : 
+# Tools for 3D acquisitions in developpement
 
 * **Rotate a servo and take photos for 3D reconstruction**
   
