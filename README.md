@@ -12,4 +12,11 @@ It requires the module *serialport* (so np install  before)
   
 * **Acquire points from 4 photos**
 
+mark points on a photo
+
+read the points in order to create OFF file
+
+convert OFF to STL
+
+
 
