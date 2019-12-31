@@ -4,26 +4,32 @@
   <script src="ProjectionImage.js"></script>
   <script src="ProjectedKeyPoint.js"></script>
   <script src="ProjectionImageDisplay.js"></script>
+
 </head>
 <body>
 
+
   <div id="controles">
-      <div ><div class='inline' id='frontImageName'></div><button  class='inline' onClick='switchImage()'><=></button></div>
+      <div><div class='inline' id='frontImageName'></div><button  class='inline' onClick='switchImage()'><=></button></div>
   </div>
 
-  <div id="controle_1"></div>
-  <div id="controle_2"></div>
+  <div id='zoom' class="img-zoom-result"></div>
 
-  <div>
-  <div id="image_1"></div>
-  <div id="image_2"></div>
+  <div id='images'>
+    <div id='image_main'></div>
+
+      <div id='image_comparison'></div>
+
   </div>
+
 
   <div id='log'></div>
+
+  <script src='zoom.js'></script>
   <script>
     function switchImage(){
 
-      if (projectionImageDisplay.name=='objet_1'){
+      if (projectionImageDisplay.name=='objet'){
         projectionImageDisplay.setDisplayFor(image_1,image);
       }else{
         projectionImageDisplay.setDisplayFor(image,image_1);
@@ -31,12 +37,16 @@
 
     }
     let imagesRegistry={};
-    let image=new ProjectionImage("objet.jpg",imagesRegistry,1);
-    let image_1=new ProjectionImage("objet_1.jpg",imagesRegistry,2);
+    let image_main=new ProjectionImage("objet.jpg",imagesRegistry);
+    let image_comparison=new ProjectionImage("objet_same.jpg",imagesRegistry);
 
 
     let projectionImageDisplay=new ProjectionImageDisplay()
-    projectionImageDisplay.setDisplayFor(image,image_1);
+    projectionImageDisplay.setDisplayFor(image_main,image_comparison);
+    window.onload=function(){
+      imageZoom(image_main.img.id, 'zoom');
+    }
+
 
   </script>
 
