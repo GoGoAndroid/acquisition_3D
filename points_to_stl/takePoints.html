@@ -1,21 +1,42 @@
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="takePoints.css">
+  <script src="ProjectionImage.js"></script>
+  <script src="ProjectedKeyPoint.js"></script>
+  <script src="ProjectionImageDisplay.js"></script>
+</head>
 <body>
 
-  <img id='img' width=800 src='objet.jpg'>
+  <div id="controles">
+      <div ><div class='inline' id='frontImageName'></div><button  class='inline' onClick='switchImage()'><=></button></div>
+  </div>
+
+  <div id="controle_1"></div>
+  <div id="controle_2"></div>
+
+  <div>
+  <div id="image_1"></div>
+  <div id="image_2"></div>
+  </div>
+
   <div id='log'></div>
   <script>
-    function clicked(evt){
+    function switchImage(){
 
-      var e = evt.target;
-      var dim = e.getBoundingClientRect();
-      var x = evt.clientX - dim.left;
-      var y = evt.clientY - dim.top;
-      console.log(x,y)
-      document.getElementById("log").innerText=
-      document.getElementById("log").innerText+x+" "+y+"\n";
+      if (projectionImageDisplay.name=='objet_1'){
+        projectionImageDisplay.setDisplayFor(image_1,image);
+      }else{
+        projectionImageDisplay.setDisplayFor(image,image_1);
+      }
+
     }
-    document.getElementById("img").addEventListener("click", clicked, false);
+    let imagesRegistry={};
+    let image=new ProjectionImage("objet.jpg",imagesRegistry,1);
+    let image_1=new ProjectionImage("objet_1.jpg",imagesRegistry,2);
 
+
+    let projectionImageDisplay=new ProjectionImageDisplay()
+    projectionImageDisplay.setDisplayFor(image,image_1);
 
   </script>
 
